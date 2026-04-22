@@ -1,0 +1,9 @@
+.esphome/
+.pioenvs/
+.piolibdeps/
+__pycache__/
+*.pyc
+*.bin
+*.elf
+*.map
+*.uf2
