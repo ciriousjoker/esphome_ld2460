@@ -1,0 +1,95 @@
+substitutions:
+  # Package release. Keep this in sync with the Git tag and CHANGELOG.md.
+  ld2460_package_version: v0.1.0
+  ld2460_external_components_source: github://ciriousjoker/esphome_ld2460@v0.1.0
+  ld2460_bus_id: ld2460_bus
+  ld2460_component_id: ld2460_radar
+  ld2460_tx_pin: GPIO16
+  ld2460_rx_pin: GPIO17
+  ld2460_publish_interval: 500ms
+  ld2460_report_log_interval: 1s
+
+external_components:
+  - source: ${ld2460_external_components_source}
+    components: [ld2460]
+    refresh: 1d
+
+uart:
+  id: ${ld2460_bus_id}
+  tx_pin: ${ld2460_tx_pin}
+  rx_pin: ${ld2460_rx_pin}
+  baud_rate: 115200
+  data_bits: 8
+  parity: NONE
+  stop_bits: 1
+  rx_buffer_size: 1024
+
+ld2460:
+  id: ${ld2460_component_id}
+  uart_id: ${ld2460_bus_id}
+  baud_scan: false
+  enable_reporting: true
+  flush_timeout: 100ms
+  max_buffer_size: 48
+  no_data_log_interval: 10s
+  publish_interval: ${ld2460_publish_interval}
+  report_log_interval: ${ld2460_report_log_interval}
+  presence:
+    name: "Presence"
+  target_count:
+    name: "Target Count"
+  summary:
+    name: "Targets"
+  firmware:
+    name: "Radar Firmware"
+  installation_mode:
+    name: "Installation Mode"
+  raw:
+    name: "Raw UART"
+  byte_count:
+    name: "UART Bytes"
+  target_1:
+    x:
+      name: "Target 1 X"
+    y:
+      name: "Target 1 Y"
+    distance:
+      name: "Target 1 Distance"
+    angle:
+      name: "Target 1 Angle"
+  target_2:
+    x:
+      name: "Target 2 X"
+    y:
+      name: "Target 2 Y"
+    distance:
+      name: "Target 2 Distance"
+    angle:
+      name: "Target 2 Angle"
+  target_3:
+    x:
+      name: "Target 3 X"
+    y:
+      name: "Target 3 Y"
+    distance:
+      name: "Target 3 Distance"
+    angle:
+      name: "Target 3 Angle"
+  target_4:
+    x:
+      name: "Target 4 X"
+    y:
+      name: "Target 4 Y"
+    distance:
+      name: "Target 4 Distance"
+    angle:
+      name: "Target 4 Angle"
+  target_5:
+    x:
+      name: "Target 5 X"
+    y:
+      name: "Target 5 Y"
+    distance:
+      name: "Target 5 Distance"
+    angle:
+      name: "Target 5 Angle"
